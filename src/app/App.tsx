@@ -49,7 +49,7 @@ export default function App() {
       <nav className="bg-white/90 backdrop-blur-sm shadow-md border-b-4 border-[#FF8C42]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-2 md:gap-8">
               <h1 className="text-2xl font-bold text-[#FF8C42]">Néssfit Stock</h1>
               <div className="flex gap-4">
                 <button
