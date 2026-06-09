@@ -50,8 +50,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2 md:gap-8">
-              <h1 className="text-2xl font-bold text-[#FF8C42]">Néssfit Stock</h1>
-              <div className="flex gap-4">
+              <h1 className="text-lg sm:text-2xl font-bold text-[#FF8C42]">Néssfit Stock</h1>
+              <div className="flex gap-2 sm:gap-4">
                 <button
                   onClick={() => setCurrentView('dashboard')}
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${
