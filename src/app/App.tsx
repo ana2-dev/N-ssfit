@@ -45,7 +45,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F5E6D3] via-[#FFE4CC] to-[#E8F5E9]">
+    <div className="min-h-screen bg-gradient-to-br from-[#F5E6D3] via-[#FFE4CC] to-[#E8F5E9] overflow-x-hidden">
       <nav className="bg-white/90 backdrop-blur-sm shadow-md border-b-4 border-[#FF8C42]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
