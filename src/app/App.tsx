@@ -45,13 +45,13 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F5E6D3] via-[#FFE4CC] to-[#E8F5E9] overflow-x-hidden">
-      <nav className="bg-white/90 backdrop-blur-sm shadow-md border-b-4 border-[#FF8C42]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2 md:gap-8">
-              <h1 className="text-lg sm:text-2xl font-bold text-[#FF8C42]">Néssfit Stock</h1>
-              <div className="flex gap-2 sm:gap-4">
+    <div className="min-h-screen w-full bg-gradient-to-br from-[#F5E6D3] via-[#FFE4CC] to-[#E8F5E9]"></div>
+  <nav className="bg-white/90 backdrop-blur-sm shadow-md border-b-4 border-[#FF8C42]">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex justify-between items-center h-16">
+        <div className="flex items-center gap-2 md:gap-8">
+          <h1 className="text-lg sm:text-2xl font-bold text-[#FF8C42]">Néssfit Stock</h1>
+          <div className="flex gap-2 sm:gap-4">
                 <button
                   onClick={() => setCurrentView('dashboard')}
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${
