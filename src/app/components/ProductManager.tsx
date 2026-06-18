@@ -1,3 +1,4 @@
+import { supabase } from './caminho/para/seu/arquivo/supabaseClient'
 import { useState, useEffect } from 'react';
 import { Plus, Trash2, Package, Edit2 } from 'lucide-react';
 
@@ -23,18 +24,34 @@ export function ProductManager() {
   });
 
   useEffect(() => {
-    const stored = localStorage.getItem('nessfit_products');
-    if (stored) {
-      setProducts(JSON.parse(stored));
+  const fetchProdutos = async () => {
+    const { data, error } = await supabase.from('produtos').select('*');
+    
+    if (error) {
+      console.error("Erro ao buscar produtos:", error);
+    } else {
+      setProducts(data);
     }
-  }, []);
-
-  const handleAdd = () => {
-    const newProduct: Product = {
+  };
+  fetchProdutos();
+}, []); 
+const handleAdd = async () => {
+      const newProduct = {
       id: Date.now().toString(),
       ...formData
     };
+ const { error } = await supabase.from('historico').insert([
+      { 
+        produto_nome: newProduct.name, 
+        quantidade_alterada: newProduct.quantity, 
+        tipo_operacao: 'Cadastro' 
+      }
+    ]);
 
+    if (error) {
+      console.error("Erro ao salvar histórico no Supabase:", error);
+    }
+};
     const updated = [...products, newProduct];
     setProducts(updated);
     localStorage.setItem('nessfit_products', JSON.stringify(updated));
