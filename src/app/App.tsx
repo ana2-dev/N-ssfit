@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { supabase } from './lib/supabase'; // Certifique-se que este caminho está correto
 import { Dashboard } from './components/Dashboard';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
@@ -23,6 +24,23 @@ export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [marmitas, setMarmitas] = useState([]);
+
+  // Função para buscar marmitas do Supabase
+  useEffect(() => {
+    async function fetchMarmitas() {
+      try {
+        const { data, error } = await supabase.from('marmitas').select('*');
+        if (error) throw error;
+        if (data) setMarmitas(data as any);
+      } catch (error) {
+        console.error('Erro ao buscar marmitas:', error);
+      }
+    }
+
+    if (isAuthenticated) {
+      fetchMarmitas();
+    }
+  }, [isAuthenticated]);
 
   const handleLogin = (user: any) => {
     setCurrentUser(user);
@@ -53,7 +71,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-[#F5E6D3] via-[#FFE4CC] to-[#E8F5E9]">
-      {/* Barra de Navegação */}
       <nav className="bg-white/90 backdrop-blur-sm shadow-md border-b-4 border-[#FF8C42]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -88,7 +105,6 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Conteúdo das Telas */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {currentView === 'dashboard' && (
           <Dashboard user={currentUser} onLogout={handleLogout} marmitas={marmitas} />
